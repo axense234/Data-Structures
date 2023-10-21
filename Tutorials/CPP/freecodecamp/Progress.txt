@@ -1,0 +1,32 @@
+Progress of Data Structures - Full Course Using C and C++(https://www.youtube.com/watch?v=B31LgI4Y4DQ):
+========================================================================================================
+
+-done Introduction to Data Structures
+-done Data Structures: List as abstract data type
+-done Introduction to Linked List
+-done Arrays vs Linked Lists
+-done Linked List - Implementation in C/C++
+-done Linked List in C/C++ - Inserting a node at beginning
+-done Linked List in C/C++ - Insert a node at nth position
+-done Linked List in C/C++ - Delete a node at nth position]
+-done Reverse a Linked List - Iterative Method
+-done Print elements of a Linked List in forward and reverse order using Recursion
+-done Reverse a Linked List using Recursion
+-done Introduction to Doubly Linked List
+-done Doubly Linked List - Implementation in C/C++
+-done Introduction to Stack
+-done Array Implementation of Stack
+-done Linked List Implementation of Stacks
+-done Reverse a string or Linked List using Stack
+-done Balanced Parentheses using Stack
+-done Infix, Prefix and Postfix
+-done Evaluation of Prefix and Postfix Expressions using Stack
+-done Infix to Postfix using Stack
+-done Introduction to Queues
+-done Array Implementation of Queue
+-done Linked List Implementation of Queue
+-done Introduction to Trees
+-done Binary Tree
+-done Binary Search Tree
+-done Binary Search Tree - Implementation in C/C++
+-done BST Implementation - Memory Allocation in Stack and Heap

@@ -1,0 +1,48 @@
+Basics of Data Structures in CPP Test
+==========================================================
+
+1.Explain to yourself how Arrays work in CPP
+2.Implement in CPP 2 operations of Arrays chosen at random(operations are: reading, deleting, inserting)
+
+3.Explain to yourself how Simply Linked Lists work in CPP
+4.Implement in CPP 3 operations of Simply Linked Lists at random(operations are: reading, deleting, inserting)
+
+5.Compare Arrays to Simply Linked Lists in CPP
+
+6.Reverse a Linked List Iteratively or Recursive(do both)
+
+7.Explain to yourself how Doubly Linked Lists work in CPP
+8.Implement in CPP 3 operations of Doubly Linked Lists at random(operations are: reading, deleting, inserting)
+
+9.Compare Simply Linked Lists to Doubly Linked Lists in CPP
+
+10.Explain to yourself how Stacks work in CPP
+11.Implement in CPP Stacks through an Array, Linked List, the stack library from stl
+12.Reverse a string and a linked list using a stack
+13.Check for balanced parentheses using a stack
+
+14.Explain the difference between Infix, Prefix and Postfix Notation
+15.Implement in CPP 3 operations at random involving the conversion of Infix, Prefix and Postfix(I->PR,PO->PR,I->PO,PO->I,...)
+
+16.Explain to yourself how Queues work in CPP
+17.Implement Queues in CPP through an Array, Linked List, the stack library from stl
+18.Implement in C++ 3 operations at random involving Queues(enqueue, dequeue, print) in linear array/linked list interpretation
+19.Implement in C++ 3 operations at random involving Queues(enqueue, dequeue, print) in circular array/linked list interpretation
+
+20.Explain to yourself how Trees work as an ADT(with 3 examples)
+21.Explain to yourself how Binary Trees work as an ADT(with 3 examples)
+22.Explain to yourself how Strict/Proper Binary Trees work as an ADT(with 3 examples)
+23.Explain to yourself how Complete Binary Trees work as an ADT(with 3 exampels)
+24.Explain to yourself how Perfect Binary Trees work as an ADT(with 3 examples)
+25.Explain to yourself how Balanced Binary Trees work as an ADT(with 3 examples)
+
+26.Explain to yourself the max number of nodes at a respective level in a tree
+27.Explain to yourself the max number of nodes in a binary tree with given height
+28.Explain to yourself the min height of a Binary Tree with n nodes
+29.Explain to yourself the max height of a Binary Tree with n nodes
+30.Explain to yourself the height of an Empty Tree and the height of a Tree with 1 node
+31.Explain to yourself how to calculate the height of a Complete Binary Tree
+32.Explain to yourself how to calculate the height of a Perfect Binary Tree
+
+33.Explain to yourself what a Binary Search Tree is and why is it used
+34.Implement in C++ 3 operations at random involving Binary Search Tree(insert, delete, search, print)
