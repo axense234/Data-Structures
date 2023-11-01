@@ -45,7 +45,8 @@ Basics of Data Structures in CPP Test
 32.Explain to yourself how to calculate the height of a Perfect Binary Tree
 
 33.Explain to yourself what a Binary Search Tree is and why is it used
-34.Implement in C++ searching/inserting algorithms(both iterative and recursive)
+34.Implement in C++ searching/inserting/deleting algorithms(both iterative and recursive)
 35.Implement in C++ finding the min/max value of a Binary Tree
 36.Implement in C++ finding the height of a Binary Tree
 37.Implement in C++ binary traversal algorithms(breadth-first and depth-first)
+38.Implement in C++ finding the predecessor/succesor of a node in a BST
