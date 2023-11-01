@@ -230,6 +230,308 @@ void postOrderTraversalBST(node *root)
     cout << root->data << ' ';
 }
 
+bool isSubtreeLesser(node *root, int value)
+{
+    if (root == NULL)
+        return true;
+    return root->data <= value && isSubtreeLesser(root->left, value) && isSubtreeLesser(root->right, value);
+}
+
+bool isSubtreeGreater(node *root, int value)
+{
+    if (root == NULL)
+        return true;
+    return root->data > value && isSubtreeGreater(root->left, value) && isSubtreeGreater(root->right, value);
+}
+
+bool isBST(node *root)
+{
+    if (root == NULL)
+        return true;
+    return isSubtreeLesser(root->left, root->data) && isSubtreeGreater(root->right, root->data) && isBST(root->left) && isBST(root->right);
+}
+
+bool isBSTEfficient(node *root, int minValue, int maxValue)
+{
+    if (root == NULL)
+        return true;
+    return root->data > minValue && root->data < maxValue && isBSTEfficient(root->left, minValue, root->data) && isBSTEfficient(root->right, root->data, maxValue);
+}
+
+node *findMinBST(node *root)
+{
+    if (root->left == NULL && root->right == NULL)
+    {
+        return root;
+    }
+    return findMinBST(root->left);
+}
+
+node *findMaxBST(node *root)
+{
+    if (root->right == NULL)
+    {
+        return root;
+    }
+    return findMaxBST(root->right);
+}
+
+node *deleteNodeRecursive(node *root, int value)
+{
+    // Moving recursively through the tree until node with given value is found
+    if (root == NULL)
+        return root;
+    else if (value < root->data)
+    {
+        root->left = deleteNodeRecursive(root->left, value);
+    }
+    else if (value > root->data)
+    {
+        root->right = deleteNodeRecursive(root->right, value);
+    }
+    // We found the node with given value
+    else
+    {
+        // 0 Children Node Deletion
+        if (root->left == NULL && root->right == NULL)
+        {
+            delete root;
+            root = NULL;
+            // 1 Children Node Deletion
+        }
+        else if (root->left == NULL)
+        {
+            node *temp = root;
+            root = root->right;
+            delete temp;
+        }
+        else if (root->right == NULL)
+        {
+            node *temp = root;
+            root = root->left;
+            delete temp;
+            // 2 Children Node Deletion;
+        }
+        else if (root->left != NULL && root->right != NULL)
+        {
+            node *temp = findMinBST(root->right);
+            root->data = temp->data;
+            root->right = deleteNodeRecursive(root->right, temp->data);
+        }
+    }
+    return root;
+}
+
+void deleteNodeIterative(node *root, int value)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+
+    node *parentNode = NULL;
+    node *currentNode = root;
+
+    while (currentNode && currentNode->data != value)
+    {
+        if (value < currentNode->data)
+        {
+            parentNode = currentNode;
+            currentNode = currentNode->left;
+        }
+        else if (value > currentNode->data)
+        {
+            parentNode = currentNode;
+            currentNode = currentNode->right;
+        }
+    }
+
+    // We either found our node or we didn't
+    if (currentNode == NULL)
+    {
+        return;
+        // Leaf Node Deletion
+    }
+    else if (currentNode->left == NULL && currentNode->right == NULL)
+    {
+        if (parentNode->left->data == currentNode->data)
+        {
+            parentNode->left = NULL;
+            delete currentNode;
+        }
+        else if (parentNode->right->data == currentNode->data)
+        {
+            parentNode->right = NULL;
+            delete currentNode;
+        }
+        // Node with 1 child Deletion
+    }
+    else if (currentNode->left == NULL || currentNode->right == NULL)
+    {
+        if (parentNode->left->data == currentNode->data)
+        {
+            if (currentNode->left == NULL)
+            {
+                parentNode->left = currentNode->right;
+            }
+            else if (currentNode->right == NULL)
+            {
+                parentNode->left = currentNode->left;
+            }
+            delete currentNode;
+        }
+        else if (parentNode->right->data == currentNode->data)
+        {
+            if (currentNode->left == NULL)
+            {
+                parentNode->right = currentNode->right;
+            }
+            else if (currentNode->right == NULL)
+            {
+                parentNode->right = currentNode->left;
+            }
+            delete currentNode;
+        }
+        // Node with 2 children Deletion
+    }
+    else if (currentNode->left != NULL && currentNode->right != NULL)
+    {
+        // If the left subtree only has 1 node(so it is a leaf node basically)
+        if (currentNode->left->left == NULL && currentNode->left->right == NULL)
+        {
+            currentNode->data = currentNode->left->data;
+            currentNode->left = NULL;
+            delete currentNode->left;
+            // If the left subtree has more than 1 node
+        }
+        else if (currentNode->left->left == NULL || currentNode->left->right == NULL)
+        {
+            node *max = currentNode->left;
+            node *maxParent = currentNode;
+
+            while (max->right != NULL)
+            {
+                maxParent = max;
+                max = max->right;
+            }
+
+            currentNode->data = max->data;
+            // Deleting the max node based on number of children it has(can have 0 or only 1 that is on the left side)
+            if (max->left == NULL && max->right == NULL)
+            {
+                maxParent->right = NULL;
+                delete max;
+            }
+            else if (max->left != NULL)
+            {
+                maxParent->left = max->left;
+                delete max;
+            }
+        }
+    }
+}
+
+node *getInorderSuccesor(node *root, int data)
+{
+    node *current = root;
+    while (current != NULL && current->data != data)
+    {
+        if (data < current->data)
+        {
+            current = current->left;
+        }
+        else if (data > current->data)
+        {
+            current = current->right;
+        }
+    }
+
+    if (current == NULL)
+    {
+        return current;
+    }
+
+    // Node has right subtree
+    if (current->right != NULL)
+    {
+        return findMinBST(current->right);
+    }
+
+    // Node does not have right subtree
+    else if (current->right == NULL)
+    {
+        node *succesor = NULL;
+        node *ancestor = root;
+        while (ancestor != current)
+        {
+            if (current->data < ancestor->data)
+            {
+                succesor = ancestor;
+                ancestor = ancestor->left;
+            }
+            else if (current->data > ancestor->data)
+            {
+                ancestor = ancestor->right;
+            }
+        }
+        return succesor;
+    }
+    else
+    {
+        return root;
+    }
+}
+
+node *getInorderPredecessor(node *root, int data)
+{
+    node *current = root;
+    while (current != NULL && current->data != data)
+    {
+        if (data < current->data)
+        {
+            current = current->left;
+        }
+        else if (data > current->data)
+        {
+            current = current->right;
+        }
+    }
+
+    if (current == NULL)
+    {
+        return current;
+    }
+
+    // #1 Node has left subtree so we find the max in it
+    if (current->left != NULL)
+    {
+        return findMaxBST(current->left);
+    }
+    // #2 Node does not have left subtree so we find the nearest ancestor where the given node is in it's right subtree
+    else if (current->left == NULL)
+    {
+        node *ancestor = root;
+        node *predecessor = NULL;
+        while (ancestor != current)
+        {
+            if (current->data < ancestor->data)
+            {
+                ancestor = ancestor->left;
+            }
+            else if (current->data > ancestor->data)
+            {
+                predecessor = ancestor;
+                ancestor = ancestor->right;
+            }
+        }
+        return predecessor;
+    }
+    else
+    {
+        return root;
+    }
+}
+
 int main()
 {
     rootBST = insertRecursive(rootBST, 10);
@@ -248,6 +550,29 @@ int main()
     inOrderTraversalBST(rootBST);
     cout << endl;
     postOrderTraversalBST(rootBST);
+    cout << endl;
+    cout << "is the binary tree a BST?: " << isBST(rootBST) << endl;
+    cout << "is the binary tree a BST?(efficient version): " << isBSTEfficient(rootBST, INT_MIN, INT_MAX) << endl;
+
+    int value = 0;
+    // cout << "Enter value of node to be deleted: " << endl;
+    // cout << "Enter value of node to find it's succesor: " << endl;
+    cout << "Enter value of node to find it's predecessor: " << endl;
+    cin >> value;
+    inOrderTraversalBST(rootBST);
+    cout << endl;
+    // rootBST = deleteNodeRecursive(rootBST, value);
+    // node *foundNode = getInorderSuccesor(rootBST, value);
+    node *foundNode = getInorderPredecessor(rootBST, value);
+    if (foundNode)
+    {
+        cout << foundNode->data << endl;
+    }
+    else
+    {
+        cout << 0 << endl;
+    }
+    inOrderTraversalBST(rootBST);
     cout << endl;
 
     // int searchValue = 0;
