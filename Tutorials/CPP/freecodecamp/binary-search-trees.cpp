@@ -269,7 +269,11 @@ node *findMinBST(node *root)
 
 node *findMaxBST(node *root)
 {
+<<<<<<< HEAD
     if (root->right == NULL)
+=======
+    if (root->left == NULL && root->left == NULL)
+>>>>>>> c070ba71c8b30c92745b7010c000fd7c5b5ad9d2
     {
         return root;
     }
@@ -482,6 +486,7 @@ node *getInorderSuccesor(node *root, int data)
     }
 }
 
+<<<<<<< HEAD
 node *getInorderPredecessor(node *root, int data)
 {
     node *current = root;
@@ -532,6 +537,8 @@ node *getInorderPredecessor(node *root, int data)
     }
 }
 
+=======
+>>>>>>> c070ba71c8b30c92745b7010c000fd7c5b5ad9d2
 int main()
 {
     rootBST = insertRecursive(rootBST, 10);
@@ -556,14 +563,22 @@ int main()
 
     int value = 0;
     // cout << "Enter value of node to be deleted: " << endl;
+<<<<<<< HEAD
     // cout << "Enter value of node to find it's succesor: " << endl;
     cout << "Enter value of node to find it's predecessor: " << endl;
+=======
+    cout << "Enter value of node to find it's succesor: " << endl;
+>>>>>>> c070ba71c8b30c92745b7010c000fd7c5b5ad9d2
     cin >> value;
     inOrderTraversalBST(rootBST);
     cout << endl;
     // rootBST = deleteNodeRecursive(rootBST, value);
+<<<<<<< HEAD
     // node *foundNode = getInorderSuccesor(rootBST, value);
     node *foundNode = getInorderPredecessor(rootBST, value);
+=======
+    node *foundNode = getInorderSuccesor(rootBST, value);
+>>>>>>> c070ba71c8b30c92745b7010c000fd7c5b5ad9d2
     if (foundNode)
     {
         cout << foundNode->data << endl;

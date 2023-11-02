@@ -36,6 +36,10 @@ Progress of Data Structures - Full Course Using C and C++(https://www.youtube.co
 -done Binary tree: Level Order Traversal
 -done Binary tree traversal: Preorder, Inorder, Postorder
 -done Delete a node from a BST
+<<<<<<< HEAD
 -done Inorder Succesor in a BST
 -done Introduction to Graphs
 -done Properties of Graphs
+=======
+-done Inorder Succesor in a BST
+>>>>>>> c070ba71c8b30c92745b7010c000fd7c5b5ad9d2
