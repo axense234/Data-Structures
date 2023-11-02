@@ -49,11 +49,7 @@ Basics of Data Structures in CPP Test
 35.Implement in C++ finding the min/max value of a Binary Tree
 36.Implement in C++ finding the height of a Binary Tree
 37.Implement in C++ binary traversal algorithms(breadth-first and depth-first)
-<<<<<<< HEAD
 38.Implement in C++ finding the predecessor/succesor of a node in a BST
 
 39.Explain to yourself how Graphs work as an ADT(with examples)
 40.List all of the properties of Graphs
-=======
-38.Implement in C++ finding the predecessor/succesor of a node in a BST
->>>>>>> c070ba71c8b30c92745b7010c000fd7c5b5ad9d2
